@@ -1,8 +1,13 @@
-# import googletrans
 from googletrans import Translator
 
-if __name__ == '__main__':
+def traslate():
+    f = open("translated.txt", "w")
+    fread = open("outputOCR.txt", "r")
     translator = Translator()
-    korean = '일부러 살려서 보냈다'
-    result = translator.translate(korean, src='ko', dest='en')
-    print(result.text)
+    file_content = fread.readlines()
+    for content in file_content:
+        result = translator.translate(content, src='ko', dest='en')
+        f.write(result.text + "\n")
+    fread.close()
+    f.close()
+

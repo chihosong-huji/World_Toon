@@ -1,6 +1,10 @@
 import easyocr
 
-if __name__ == '__main__':
+def OCR(photo_name):
+    f = open("outputOCR.txt", "w")
     reader = easyocr.Reader(['ko'])
-    result = reader.readtext('test.png')
-    print(result)
+    result = reader.readtext(photo_name)
+    for data in result:
+        f.write(data[1] + "\n")
+    f.close()
+    return
